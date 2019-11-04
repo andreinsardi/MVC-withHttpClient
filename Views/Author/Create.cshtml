@@ -1,0 +1,11 @@
+﻿@model AuthorViewModel
+
+
+<form method="POST" target="_self" action="Add">
+    <input type="hidden" asp-for="AuthorID" />
+    <div class="form-group">
+        <label for="author">Nome</label>
+        <input type="text" class="form-control" asp-for="Name" placeholder="Nome do author">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
