@@ -1,0 +1,53 @@
+﻿<Properties StartupConfiguration="{0D917F1D-04BC-4039-9FCF-205A678F9836}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/AuthorController.cs">
+    <Files>
+      <File FileName="Views/Author/Index.cshtml" Line="29" Column="13" />
+      <File FileName="Views/Author/Create.cshtml" />
+      <File FileName="Models/PostViewModel.cs" />
+      <File FileName="Models/AuthorViewModel.cs" Line="1" Column="1" />
+      <File FileName="Controllers/AuthorController.cs" Line="31" Column="1" />
+      <File FileName="Startup.cs" Line="1" Column="1" />
+      <File FileName="appsettings.json" Line="1" Column="1" />
+      <File FileName="Appsettings.cs" Line="6" Column="11" />
+      <File FileName="Properties/launchSettings.json" Line="1" Column="1" />
+      <File FileName="Program.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MVC-withHttpClient" expanded="True">
+            <Node name="MVC-withHttpClient" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+              <Node name="Controllers" expanded="True">
+                <Node name="AuthorController.cs" selected="True" />
+              </Node>
+              <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Author" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.MVC-withHttpClient PreferredExecutionTarget="/Applications/Firefox Developer Edition.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Volumes/HDMemory-/source/ESPM/web-prog-exemplo/aula-3S-20192S/MVC-withHttpClient/MVC-withHttpClient/Controllers/AuthorController.cs" relfile="Controllers/AuthorController.cs" line="74" column="1" />
+      <Breakpoint file="/Volumes/HDMemory-/source/ESPM/web-prog-exemplo/aula-3S-20192S/MVC-withHttpClient/MVC-withHttpClient/Controllers/AuthorController.cs" relfile="Controllers/AuthorController.cs" line="95" column="1" />
+      <Breakpoint file="/Volumes/HDMemory-/source/ESPM/web-prog-exemplo/aula-3S-20192S/MVC-withHttpClient/MVC-withHttpClient/Controllers/f4dvbkr4.po2~" relfile="Controllers/f4dvbkr4.po2~" line="4" column="1" />
+      <Breakpoint file="/Volumes/HDMemory-/source/ESPM/web-prog-exemplo/aula-3S-20192S/MVC-withHttpClient/MVC-withHttpClient/Controllers/f4dvbkr4.po2~" relfile="Controllers/f4dvbkr4.po2~" line="22" column="1" />
+      <Breakpoint file="/Volumes/HDMemory-/source/ESPM/web-prog-exemplo/aula-3S-20192S/MVC-withHttpClient/MVC-withHttpClient/Controllers/AuthorController.cs" relfile="Controllers/AuthorController.cs" line="31" column="1" />
+      <Breakpoint file="/Volumes/HDMemory-/source/ESPM/web-prog-exemplo/aula-3S-20192S/MVC-withHttpClient/MVC-withHttpClient/Controllers/AuthorController.cs" relfile="Controllers/AuthorController.cs" line="83" column="1" />
+      <Breakpoint file="/Volumes/HDMemory-/source/ESPM/web-prog-exemplo/aula-3S-20192S/MVC-withHttpClient/MVC-withHttpClient/Controllers/AuthorController.cs" relfile="Controllers/AuthorController.cs" line="151" column="1" />
+      <Breakpoint file="/Volumes/HDMemory-/source/ESPM/web-prog-exemplo/aula-3S-20192S/MVC-withHttpClient/MVC-withHttpClient/Controllers/AuthorController.cs" relfile="Controllers/AuthorController.cs" line="119" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

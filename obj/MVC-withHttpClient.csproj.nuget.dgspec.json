@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Volumes/HDMemory-/source/ESPM/web-prog-exemplo/MVC-DotNetCore-API/Sample/MVC-withHttpClient/MVC-withHttpClient.csproj": {}
+    "/Volumes/HDMemory-/source/ESPM/web-prog-exemplo/aula-3S-20192S/MVC-withHttpClient/MVC-withHttpClient/MVC-withHttpClient.csproj": {}
   },
   "projects": {
-    "/Volumes/HDMemory-/source/ESPM/web-prog-exemplo/MVC-DotNetCore-API/Sample/MVC-withHttpClient/MVC-withHttpClient.csproj": {
+    "/Volumes/HDMemory-/source/ESPM/web-prog-exemplo/aula-3S-20192S/MVC-withHttpClient/MVC-withHttpClient/MVC-withHttpClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Volumes/HDMemory-/source/ESPM/web-prog-exemplo/MVC-DotNetCore-API/Sample/MVC-withHttpClient/MVC-withHttpClient.csproj",
+        "projectUniqueName": "/Volumes/HDMemory-/source/ESPM/web-prog-exemplo/aula-3S-20192S/MVC-withHttpClient/MVC-withHttpClient/MVC-withHttpClient.csproj",
         "projectName": "MVC-withHttpClient",
-        "projectPath": "/Volumes/HDMemory-/source/ESPM/web-prog-exemplo/MVC-DotNetCore-API/Sample/MVC-withHttpClient/MVC-withHttpClient.csproj",
+        "projectPath": "/Volumes/HDMemory-/source/ESPM/web-prog-exemplo/aula-3S-20192S/MVC-withHttpClient/MVC-withHttpClient/MVC-withHttpClient.csproj",
         "packagesPath": "/Users/andre/.nuget/packages/",
-        "outputPath": "/Volumes/HDMemory-/source/ESPM/web-prog-exemplo/MVC-DotNetCore-API/Sample/MVC-withHttpClient/obj/",
+        "outputPath": "/Volumes/HDMemory-/source/ESPM/web-prog-exemplo/aula-3S-20192S/MVC-withHttpClient/MVC-withHttpClient/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -55,6 +55,10 @@
               "target": "Package",
               "version": "[2.2.0, )",
               "autoReferenced": true
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.18, )"
             }
           },
           "imports": [

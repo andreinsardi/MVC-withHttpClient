@@ -2,8 +2,7 @@
 
 @{
     List<AuthorViewModel> authors = (List<AuthorViewModel>)ViewData["authors"];
-
-}
+} 
 <div class="row">
     <div class="col-10"><h1>Autores</h1></div>
     <div class="col-2"><a href="Author/Create" class="btn btn-primary">Novo Autor</a></div>
@@ -21,12 +20,13 @@
     <tbody>
         @foreach (var item in authors)
         {
-            <tr>
-                <th scope="row">@item.AuthorID</th>
-                <td>@item.Name</td>
-                <td><a href="Author/Create?AuthorID=@item.AuthorID"><i class="fas fa-edit"></i></a></td>
-                <td><a href="Author/Delete?AuthorID=@item.AuthorID"><i class="fas fa-trash-alt"></i></a></td>
-            </tr>
+                <tr>
+                    <th scope="row">@item.AuthorID</th>
+                    <td>@item.Name</td>
+                    <td><a href="Author/Create?AuthorID=@item.AuthorID"><i class="fas fa-edit"></i></a></td>
+                    <td><a href="Author/Delete?AuthorID=@item.AuthorID"><i class="fas fa-trash-alt"></i></a></td>
+                </tr>
+            
         }
     </tbody>
 </table>

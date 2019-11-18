@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using MVC_withHttpClient.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using MySql.Data.MySqlClient;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,99 +23,174 @@ namespace MVC_withHttpClient.Controllers
             _appSettings = appSettings;
         }
 
+
         // GET: /<controller>/
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            HttpClient client = new HttpClient();
+            MySqlConnection conn = new MySqlConnection(_appSettings.ConnectionString);
+            List<AuthorViewModel> authors = new List<AuthorViewModel>();
+            List<PostViewModel> posts = new List<PostViewModel>();
 
-            var response = await client.GetAsync(_appSettings.BlogDataAPI + "/api/Author");
-            var content = await response.Content.ReadAsStringAsync();
 
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var authors = JsonConvert.DeserializeObject<List<AuthorViewModel>>(content);
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand("SELECT Author.AuthorID, Author.Name FROM Author", conn))
+                {
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+
+                        authors.Add(new AuthorViewModel
+                        {
+                            AuthorID = dataReader.GetInt32(0),
+                            Name = dataReader.GetString(1)
+                        });
+
+                    }
+                }
 
                 ViewData["authors"] = authors;
 
                 return View();
             }
-            else
+            catch (Exception ex)
             {
-                ViewData["authors"] = new List<AuthorViewModel>();
-                return View();
+                return View(ex);
             }
-
-
+            finally
+            {
+                conn.Dispose();
+                conn.Close();
+            }       
 
         }
 
-        public async Task<IActionResult> Create(int AuthorID)
+        public IActionResult Create(int AuthorID)
         {
-            HttpClient client = new HttpClient();
+           
+            MySqlConnection conn = new MySqlConnection(_appSettings.ConnectionString);
+            AuthorViewModel authorViewModel = new AuthorViewModel();
 
-            var response = await client.GetAsync(_appSettings.BlogDataAPI + "/api/Author/" + AuthorID);
-            var content = await response.Content.ReadAsStringAsync();
 
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var authorViewModel = JsonConvert.DeserializeObject<AuthorViewModel>(content);
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand("SELECT AuthorID, Name FROM Author where AuthorID =" + AuthorID, conn))
+                {
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    while (dataReader.Read())
+                    {
 
 
-                return View(authorViewModel);
+                        authorViewModel.AuthorID = dataReader.GetInt32(0);
+                        authorViewModel.Name = dataReader.GetString(1);
+                        
+
+                    }
+                }
+
+                if (authorViewModel.AuthorID>0)
+                {
+                    return View(authorViewModel);
+                }
+                else
+                {
+                    return View(new AuthorViewModel { });
+                }
+
             }
-            else
+            catch (Exception ex)
             {
-                return View(new AuthorViewModel { });
+                return View(ex);
             }
-
+            finally
+            {
+                conn.Dispose();
+                conn.Close();
+            }
 
         }
 
-        public async Task<IActionResult> Delete(int AuthorID)
+        public IActionResult Delete(int AuthorID)
         {
-            HttpClient client = new HttpClient();
+            MySqlConnection conn = new MySqlConnection(_appSettings.ConnectionString);
 
-            var response = await client.DeleteAsync(_appSettings.BlogDataAPI + "/api/Author/" + AuthorID);
-            var content = await response.Content.ReadAsStringAsync();
+            try {
+
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand("DELETE FROM Author WHERE AuthorID =" + AuthorID, conn))
+                {
+
+                    cmd.ExecuteNonQuery();
+
+
+                }
 
             return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                return View(ex);
+            }
+            finally
+            {
+                conn.Dispose();
+                conn.Close();
+            }
 
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(AuthorViewModel request)
+        public IActionResult Add(AuthorViewModel request)
         {
+          
+          MySqlConnection conn = new MySqlConnection(_appSettings.ConnectionString);
 
-            HttpClient client = new HttpClient();
-
-        
-
-            if (request.AuthorID > 0)
+            try
             {
+                conn.Open();
 
-                var response = await client.PutAsJsonAsync(_appSettings.BlogDataAPI + "/api/Author/" + request.AuthorID, new StringContent(JsonConvert.SerializeObject(request,
-                                                                                                new JsonSerializerSettings
-                                                                                                {
-                                                                                                    ContractResolver = new CamelCasePropertyNamesContractResolver()
-                                                                                                }), Encoding.UTF8, "application/json"));
-                var content = await response.Content.ReadAsStringAsync();
+                if (request.AuthorID > 0)
+                {
+
+                    using (MySqlCommand cmd = new MySqlCommand("update Author set name = @name where AuthorID = @AuthorId", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@name", request.Name);
+                        cmd.Parameters.AddWithValue("@AuthorId", request.AuthorID);
+
+                        cmd.ExecuteNonQuery();
+                    }
 
 
+                }
+                else
+                {
+                    using (MySqlCommand cmd = new MySqlCommand("insert into Author (Name) Values (@name)", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@name", request.Name);
+
+                        cmd.ExecuteNonQuery();
 
 
+                    }
+                }
+
+                return RedirectToAction("Index");
+             }
+            catch (Exception ex)
+            {
+                return View(ex);
             }
-            else
+            finally
             {
-                var response = await client.PostAsync(_appSettings.BlogDataAPI + "/api/Author/" , new StringContent(JsonConvert.SerializeObject(request,
-                                                                                              new JsonSerializerSettings
-                                                                                              {
-                                                                                                  ContractResolver = new CamelCasePropertyNamesContractResolver()
-                                                                                              }), Encoding.UTF8, "application/json"));
-                var content = await response.Content.ReadAsStringAsync();
+                conn.Dispose();
+                conn.Close();
+            }
 
-            } 
-
-            return RedirectToAction("Index");
         }
     }
 }
